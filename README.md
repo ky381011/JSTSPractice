@@ -1,2 +1,2 @@
 # JSTSPractice
-Javascript and Typescript practice
+JavascriptとTypescriptを学ぶためのリポジトリです。  
