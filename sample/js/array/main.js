@@ -34,3 +34,13 @@ console.log("分割代入: ", a, b);
 const O = { x: 100, y: 200 };
 const {x, y} = {y : 200, x: 100};
 console.log("オブジェクトの分割代入: ", x, y);
+
+// 配列は順番が重要
+const fnArray = ([country, state, city ]) => {
+    console.log("==配列の分割代入==");
+    console.log("国: ", country);
+    console.log("州: ", state);
+    console.log("市: ", city);
+};
+
+fnArray(['Japan', 'Tokyo', 'Shibuya']);
