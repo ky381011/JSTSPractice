@@ -25,6 +25,12 @@ const newArray4 = array
 console.log("チェーンで5以上の値: ", newArray4);
 
 // 分割代入
+// 配列
 const A = [10, 20];
 const [a, b] = A;
 console.log("分割代入: ", a, b);
+
+// オブジェクト
+const O = { x: 100, y: 200 };
+const {x, y} = {y : 200, x: 100};
+console.log("オブジェクトの分割代入: ", x, y);
