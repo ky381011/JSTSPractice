@@ -16,10 +16,15 @@ const newArray2 = array.map(num => num * 2);
 
 // 2. filterメソッドで条件に合う値だけを抽出する
 const newArray3 = newArray2.filter(num => num >= 5);
-console.log("50以上の値: ", newArray3);
+console.log("5以上の値: ", newArray3);
 
 // 3. チェーンで書く
 const newArray4 = array
     .map(num => num * 2)
     .filter(num => num >= 5);
 console.log("チェーンで5以上の値: ", newArray4);
+
+// 分割代入
+const A = [10, 20];
+const [a, b] = A;
+console.log("分割代入: ", a, b);
