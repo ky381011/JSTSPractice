@@ -17,3 +17,19 @@ switch (num) {
     console.log(`${num}th place`);
     break; // defaultのbreakは省略可能
 }
+
+// if文で書くと以下のようになる
+/*
+if (num === 1) {  
+    console.log('Gold') ;
+}
+else if (num === 2) {
+    console.log('Silver');
+} 
+else if (num === 3) {
+    console.log('Bronze');
+} 
+else {
+    console.log(`${num}th place`);
+}
+*/
