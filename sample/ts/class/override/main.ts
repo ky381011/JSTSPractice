@@ -17,6 +17,11 @@ class User {
 class AdminUser extends User {
   adminRole: number = 0;
 
+  constructor(name: string, age: number, adminRole: number) {
+    super(name, age); // 親クラスのコンストラクタを呼び出す
+    this.adminRole = adminRole;
+  }
+
   public sayAdminRole(): void {
     console.log(`My admin Role: ${this.adminRole}`);
   }
@@ -27,7 +32,7 @@ class AdminUser extends User {
   }
 }
 
-const emma = new AdminUser('Emma', 0); // emmaはAdminUser型になる
+const emma = new AdminUser('Emma', 30, 1); // emmaはAdminUser型になる
 console.log(emma.name);
 console.log(emma.isAdult());
 emma.sayAdminRole();
