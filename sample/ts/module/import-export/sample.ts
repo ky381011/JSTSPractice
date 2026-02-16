@@ -1,2 +1,4 @@
-export const name = 'sample';
-export const age = 30;
+const name = 'sample';
+const age = 30;
+
+export { name, age };
