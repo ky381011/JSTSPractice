@@ -21,7 +21,16 @@ const onClickAdd = () => {
   completeButton.className = "todo-item";
   completeButton.innerText = "完了";
   completeButton.addEventListener("click", () => {
-    alert("完了");
+    // クリックされた完了ボタンの親タグ(li)配下の完了ボタンと削除ボタンを削除する
+    const moveTarget = completeButton.closest("li");
+    completeButton.nextElementSibling.remove();  // 完了ボタンの次の要素(削除ボタン)を削除する
+    completeButton.remove();  // 完了ボタン自身を削除する
+    // 戻すボタンを生成して完了したTODOに追加する
+    const backButton = document.createElement("button");
+    backButton.innerText = "戻す";
+    moveTarget.firstElementChild.appendChild(backButton);  // moveTargetの最初の子要素(div)に戻すボタンを追加する
+    // 完了リストに移動する
+    document.getElementById("complete-list").appendChild(moveTarget); // DOM自体が移動するため未完了リストから自動で削除される
   });
 
   // button(削除)タグの生成
