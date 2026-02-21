@@ -20,10 +20,18 @@ const onClickAdd = () => {
   const completeButton = document.createElement("button");
   completeButton.className = "todo-item";
   completeButton.innerText = "完了";
+  completeButton.addEventListener("click", () => {
+    alert("完了");
+  });
 
   // button(削除)タグの生成
   const deleteButton = document.createElement("button");
   deleteButton.innerText = "削除";
+  deleteButton.addEventListener("click", () => {
+    // クリックされた削除ボタンの親タグ(li)を未完了のTODOリストから削除する
+    const deleteTarget = deleteButton.closest("li");
+    document.getElementById("incomplete-list").removeChild(deleteTarget);
+  });
 
   // divタグの子要素にpタグを設定する
   div.appendChild(p);
