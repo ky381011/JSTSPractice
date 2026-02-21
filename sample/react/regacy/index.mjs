@@ -16,8 +16,21 @@ const onClickAdd = () => {
   p.className = "todo-item";
   p.innerText = inputText;
 
+  // button(完了)タグの生成
+  const completeButton = document.createElement("button");
+  completeButton.className = "todo-item";
+  completeButton.innerText = "完了";
+
+  // button(削除)タグの生成
+  const deleteButton = document.createElement("button");
+  deleteButton.innerText = "削除";
+
   // divタグの子要素にpタグを設定する
   div.appendChild(p);
+  // divタグの子要素にbutton(完了)タグを設定する
+  div.appendChild(completeButton);
+  // divタグの子要素にbutton(削除)タグを設定する
+  div.appendChild(deleteButton);
 
   // liタグの子要素にdivタグを設定する
   li.appendChild(div);
