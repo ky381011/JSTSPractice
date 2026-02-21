@@ -6,18 +6,24 @@ const onClickAdd = () => {
 
   // liタグの生成
   const li = document.createElement("li");
-  console.log(li);
 
   // divタグの生成
   const div = document.createElement("div");
   div.className = "list-row";
-  console.log(div);
 
   // pタグの生成
   const p = document.createElement("p");
   p.className = "todo-item";
   p.innerText = inputText;
-  console.log(p);
+
+  // divタグの子要素にpタグを設定する
+  div.appendChild(p);
+
+  // liタグの子要素にdivタグを設定する
+  li.appendChild(div);
+
+  // 未完了のTODOリストにliタグを追加する
+  document.getElementById("incomplete-list").appendChild(li);  // appendChiledは子要素の最後に追加する
 }
 
 document.getElementById("add-button").addEventListener("click", onClickAdd);
