@@ -34,7 +34,13 @@ const createIncompleteTodo = (todo) => {
     // 戻すボタンを生成して完了したTODOに追加する
     const backButton = document.createElement("button");
     backButton.innerText = "戻す";
-    backButton.addEventListener("click", () => {});
+    backButton.addEventListener("click", () => {
+      // 完了ボタンを押したTODOの内容を取得する
+      const todoText = backButton.previousElementSibling.innerText;
+      createIncompleteTodo(todoText);  // 取得した内容を未完了のTODOに追加する
+      // 押された戻すボタンの親タグ(li)を完了のTODOリストから削除する
+      backButton.closest("li").remove();
+    });
     moveTarget.firstElementChild.appendChild(backButton);  // moveTargetの最初の子要素(div)に戻すボタンを追加する
     // 完了リストに移動する
     document.getElementById("complete-list").appendChild(moveTarget); // DOM自体が移動するため未完了リストから自動で削除される
