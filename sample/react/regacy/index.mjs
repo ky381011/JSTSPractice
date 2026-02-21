@@ -1,9 +1,15 @@
 const onClickAdd = () => {
   // テキストボックスの値を取得する
   const inputText = document.getElementById("add-text").value;
-  // tテキストボックスを初期化する
+  // テキストボックスを初期化する
   document.getElementById("add-text").value = "";
 
+  // 関数createIncompleteTodoにテキストボックスの値を渡す
+  createIncompleteTodo(inputText);
+}
+
+// 渡された引数をもとに未完了のTODOを作成する関数
+const createIncompleteTodo = (todo) => {
   // liタグの生成
   const li = document.createElement("li");
 
@@ -14,7 +20,7 @@ const onClickAdd = () => {
   // pタグの生成
   const p = document.createElement("p");
   p.className = "todo-item";
-  p.innerText = inputText;
+  p.innerText = todo;
 
   // button(完了)タグの生成
   const completeButton = document.createElement("button");
@@ -28,6 +34,7 @@ const onClickAdd = () => {
     // 戻すボタンを生成して完了したTODOに追加する
     const backButton = document.createElement("button");
     backButton.innerText = "戻す";
+    backButton.addEventListener("click", () => {});
     moveTarget.firstElementChild.appendChild(backButton);  // moveTargetの最初の子要素(div)に戻すボタンを追加する
     // 完了リストに移動する
     document.getElementById("complete-list").appendChild(moveTarget); // DOM自体が移動するため未完了リストから自動で削除される
