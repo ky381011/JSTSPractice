@@ -1,10 +1,20 @@
 // 関数単位でコンポーネント化する
 
 export const App = () => {
+  const onClickButton = () => {
+    alert('');
+  }
+  const contentStyle = {
+    color: 'blue',
+    fontSize: '18px',
+    margin: 100,
+  };
   return (
     <>
-      <h1>こんにちは</h1>
-      <p>お元気ですか？</p>
+      {/* 一つ目の波かっこはJavaScriptを使うため、二つ目の波かっこはオブジェクトを表すため */}
+      <h1 style={ {color: 'red'} }>こんにちは</h1>
+      <p style={contentStyle}>お元気ですか？</p>
+      <button onClick={onClickButton}>ボタン</button>
     </>
   );
 };
@@ -12,7 +22,6 @@ export const App = () => {
 // ========================
 // 学習内容
 // ========================
-
 
 // コンポーネントの変数は大文字で始める
 // const App = () => {
