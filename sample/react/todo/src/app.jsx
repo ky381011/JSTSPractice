@@ -1,19 +1,18 @@
 // 関数単位でコンポーネント化する
 
+import { ColorfulMessage } from "./components/ColorfulMessage";
+
 export const App = () => {
   const onClickButton = () => {
     alert('');
   }
-  const contentStyle = {
-    color: 'blue',
-    fontSize: '18px',
-    margin: 100,
-  };
+
   return (
     <>
       {/* 一つ目の波かっこはJavaScriptを使うため、二つ目の波かっこはオブジェクトを表すため */}
       <h1 style={ {color: 'red'} }>こんにちは</h1>
-      <p style={contentStyle}>お元気ですか？</p>
+      <ColorfulMessage color="blue">お元気ですか？</ColorfulMessage>
+      <ColorfulMessage color="green">元気です！</ColorfulMessage>
       <button onClick={onClickButton}>ボタン</button>
     </>
   );
