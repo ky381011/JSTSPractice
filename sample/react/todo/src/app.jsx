@@ -6,7 +6,8 @@ import { ColorfulMessage } from "./components/ColorfulMessage";
 export const App = () => {
   const [num, setNum] = useState(0); // useStateはReactの機能を使うための関数
   const onClickCountUp = () => {
-    setNum(num + 1);
+    setNum( (prev) => prev + 1 ); // prevは現在のnumの値を表す。prev + 1でnumの値を1増やす
+    setNum( (prev) => prev + 1 );
   }
 
   return (
