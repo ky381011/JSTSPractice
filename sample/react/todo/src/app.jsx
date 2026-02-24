@@ -5,9 +5,13 @@ import { ColorfulMessage } from "./components/ColorfulMessage";
 
 export const App = () => {
   const [num, setNum] = useState(0); // useStateはReactの機能を使うための関数
+  const [isShowFace, setIsShowFace] = useState(true); // isShowFaceは現在の状態を表す。setIsShowFaceは状態を更新するための関数
   const onClickCountUp = () => {
     setNum( (prev) => prev + 1 ); // prevは現在のnumの値を表す。prev + 1でnumの値を1増やす
     setNum( (prev) => prev + 1 );
+  }
+  const onClickToggle = () => {
+    setIsShowFace(!isShowFace); // !isShowFaceは現在のisShowFaceの値を反転させる。trueならfalse、falseならtrueになる
   }
 
   return (
@@ -18,6 +22,8 @@ export const App = () => {
       <ColorfulMessage color="green">元気です！</ColorfulMessage>
       <button onClick={onClickCountUp}>カウントアップ</button>
       <p>{num}</p>
+      <button onClick={onClickToggle}>on/off</button>
+      {isShowFace && <p>( *´艸｀)</p> } {/* isShowFaceがtrueのときだけ、顔文字を表示する */}
     </>
   );
 };
