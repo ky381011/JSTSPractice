@@ -1,6 +1,6 @@
 // 関数単位でコンポーネント化する
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ColorfulMessage } from "./components/ColorfulMessage";
 
 export const App = () => {
@@ -10,11 +10,22 @@ export const App = () => {
   const [isShowFace, setIsShowFace] = useState(true); // isShowFaceは現在の状態を表す。setIsShowFaceは状態を更新するための関数
   const onClickCountUp = () => {
     setNum( (prev) => prev + 1 ); // prevは現在のnumの値を表す。prev + 1でnumの値を1増やす
-    setNum( (prev) => prev + 1 );
   }
   const onClickToggle = () => {
     setIsShowFace(!isShowFace); // !isShowFaceは現在のisShowFaceの値を反転させる。trueならfalse、falseならtrueになる
   }
+
+  // useEffectは副作用を処理するための関数。副作用とは、コンポーネントのレンダリング以外の処理のことを指す。例えば、APIからデータを取得する、イベントリスナーを設定する、などが副作用にあたる。
+  useEffect(() => {
+    console.log("useEffectが実行されました"); // useEffectが実行されるたびに、コンソールにこのメッセージが表示される
+    if (num % 3 === 0) { // numが3の倍数のとき、顔文字を表示する
+      isShowFace || setIsShowFace(true); // isShowFaceがfalseのときだけ、setIsShowFace(true)を実行する。これにより、numが3の倍数のときは必ず顔文字が表示されるようになる
+    } else { // numが3の倍数でないとき、顔文字を非表示にする
+      isShowFace && setIsShowFace(false); // isShowFaceがtrueのときだけ、setIsShowFace(false)を実行する。これにより、numが3の倍数でないときは必ず顔文字が非表示になるようになる
+    }
+  }, [num]); // numが変更されるたびに、useEffectが実行されるようになる
+
+  
 
   return (
     <>
