@@ -1,9 +1,11 @@
 // 関数単位でコンポーネント化する
 
-import { use, useState } from "react";
+import { useState } from "react";
 import { ColorfulMessage } from "./components/ColorfulMessage";
 
 export const App = () => {
+  // StrictModeを有効にしていると、Reactは開発モードでのみ、コンポーネントを2回レンダリングする。これにより、潜在的な問題を早期に発見できるようになる。
+  console.log("Appがレンダリングされました"); // Appコンポーネントがレンダリングされるたびに、コンソールにこのメッセージが表示される
   const [num, setNum] = useState(0); // useStateはReactの機能を使うための関数
   const [isShowFace, setIsShowFace] = useState(true); // isShowFaceは現在の状態を表す。setIsShowFaceは状態を更新するための関数
   const onClickCountUp = () => {
