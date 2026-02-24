@@ -8,3 +8,6 @@ export const ColorfulMessage = (props) => { // 最初から分割代入しても
     <p style={contentStyle}>{children}</p>
   );
 };
+
+// default exportは、ファイル内で1つしかできない。importするときは、import ColorfulMessage from "./components/ColorfulMessage";のように、{}を使わずにインポートする。
+// export default ColorfulMessage;
