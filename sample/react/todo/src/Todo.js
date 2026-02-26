@@ -1,8 +1,8 @@
 import "./style.css";
 
-export default function App() {
+export function Todo() {
   return (
-    <div className="app">
+    <div>
       <h1>Todo App</h1>
     </div>
   );
