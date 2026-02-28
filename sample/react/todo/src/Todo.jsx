@@ -7,7 +7,7 @@ export function Todo() {
   // コンポーネントの構成
   // ===================================
   const [todoText, setTodoText] = useState("");
-  const [imcompleteTodos, setImcompleteTodos] = useState([
+  const [incompleteTodos, setIncompleteTodos] = useState([
     "TODO1",
     "TODO2"
   ]);
@@ -18,12 +18,11 @@ export function Todo() {
   // ===================================
   // タスクの追加機能
   // ===================================
-  
   const onChangeTodoText = (event) => setTodoText(event.target.value); // 実際の開発では react-hook-form などのライブラリを使用することが多い
   const onClickAdd = () => {
     if (todoText === "") return; // 入力が空の場合は何もしない
-    const newTodos = [...imcompleteTodos, todoText]; // スプレッド構文で配列を展開して新しい配列を作成する
-    setImcompleteTodos(newTodos); // 既存の配列を直接変更するのではなく、新しい配列を作成して状態を更新する
+    const newTodos = [...incompleteTodos, todoText]; // スプレッド構文で配列を展開して新しい配列を作成する
+    setIncompleteTodos(newTodos); // 既存の配列を直接変更するのではなく、新しい配列を作成して状態を更新する
     setTodoText(""); // 入力欄を空にする
   }
 
@@ -31,14 +30,21 @@ export function Todo() {
   // タスクの削除機能
   // ===================================
   const onClickDelete = (index) => {
-    const newTodos = [...imcompleteTodos]; // スプレッド構文で配列を展開して新しい配列を作成する
+    const newTodos = [...incompleteTodos]; // スプレッド構文で配列を展開して新しい配列を作成する
     newTodos.splice(index, 1); // index番目の要素を削除する
-    setImcompleteTodos(newTodos); // 既存の配列を直接変更するのではなく、新しい配列を作成して状態を更新する
+    setIncompleteTodos(newTodos); // 既存の配列を直接変更するのではなく、新しい配列を作成して状態を更新する
   }
 
   // ===================================
   // タスクの完了機能
   // ===================================
+  const onClickComplete = (index) => {
+    const newIncompleteTodos = [...incompleteTodos]; // スプレッド構文で配列を展開して新しい配列を作成する
+    newIncompleteTodos.splice(index, 1); // index番目の要素を削除する
+    const newCompleteTodos = [...completeTodos, incompleteTodos[index]]; // スプレッド構文で配列を展開して新しい配列を作成する
+    setIncompleteTodos(newIncompleteTodos); // 既存の配列を直接変更するのではなく、新しい配列を作成して状態を更新する
+    setCompleteTodos(newCompleteTodos); // 既存の配列を直接変更するのではなく、新しい配列を作成して状態を更新する
+  }
 
   // ===================================
   // タスクの戻す機能
@@ -53,12 +59,12 @@ export function Todo() {
       <div className="incomplete-area">
         <p className="title">未完了のTODO</p>
         <ul>
-          {imcompleteTodos.map((todo, index) => { // indexは順番が変わる場合があるため、keyには使用しない
+          {incompleteTodos.map((todo, index) => { // indexは順番が変わる場合があるため、keyには使用しない
             return (
               <li key={todo}>
                 <div className="list-row">
                   <p className="todo-item">{todo}</p>
-                  <button>完了</button>
+                  <button onClick={() => onClickComplete(index)}>完了</button>
                   <button onClick={() => onClickDelete(index)}>削除</button> {/* onClickDeleteに引数を渡すために、無名関数でラップする */ }
                 </div>
               </li>
