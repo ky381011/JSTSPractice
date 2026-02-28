@@ -7,14 +7,8 @@ export function Todo() {
   // コンポーネントの構成
   // ===================================
   const [todoText, setTodoText] = useState("");
-  const [incompleteTodos, setIncompleteTodos] = useState([
-    "TODO1",
-    "TODO2"
-  ]);
-  const [completeTodos, setCompleteTodos] = useState([
-    "TODO3",
-    "TODO4"
-  ]);
+  const [incompleteTodos, setIncompleteTodos] = useState([]);
+  const [completeTodos, setCompleteTodos] = useState([]);
   // ===================================
   // タスクの追加機能
   // ===================================
@@ -49,7 +43,14 @@ export function Todo() {
   // ===================================
   // タスクの戻す機能
   // ===================================
-  
+  const onClickBack = (index) => {
+    const newCompleteTodos = [...completeTodos]; // スプレッド構文で配列を展開して新しい配列を作成する
+    newCompleteTodos.splice(index, 1); // index番目の要素を削除する
+    const newIncompleteTodos = [...incompleteTodos, completeTodos[index]]; // スプレッド構文で配列を展開して新しい配列を作成する
+    setCompleteTodos(newCompleteTodos); // 既存の配列を直接変更するのではなく、新しい配列を作成して状態を更新する
+    setIncompleteTodos(newIncompleteTodos); // 既存の配列を直接変更するのではなく、新しい配列を作成して状態を更新する
+  }
+
   return (
     <>
       <div className="input-area">
@@ -75,12 +76,12 @@ export function Todo() {
       <div className="complete-area">
         <p className="title">完了のTODO</p>
         <ul>
-          {completeTodos.map((todo) => {
+          {completeTodos.map((todo, index) => {
             return (
               <li key={todo}>
                 <div className="list-row">
                   <p className="todo-item">{todo}</p>
-                  <button>戻す</button>
+                  <button onClick={() => onClickBack(index)}>戻す</button>
                 </div>
               </li>
             );
