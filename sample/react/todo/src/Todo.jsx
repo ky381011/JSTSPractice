@@ -4,18 +4,9 @@ import { useState } from "react";
 
 export function Todo() {
   // ===================================
-  // 追加機能
+  // コンポーネントの構成
   // ===================================
   const [todoText, setTodoText] = useState("");
-  const onChangeTodoText = (event) => setTodoText(event.target.value); // 実際の開発では react-hook-form などのライブラリを使用することが多い
-  const onClickAdd = () => {
-    if (todoText === "") return; // 入力が空の場合は何もしない
-    const newTodos = [...imcompleteTodos, todoText]; // スプレッド構文で配列を展開して新しい配列を作成する
-    setImcompleteTodos(newTodos); // 既存の配列を直接変更するのではなく、新しい配列を作成して状態を更新する
-    setTodoText(""); // 入力欄を空にする
-  }
-
-
   const [imcompleteTodos, setImcompleteTodos] = useState([
     "TODO1",
     "TODO2"
@@ -24,7 +15,35 @@ export function Todo() {
     "TODO3",
     "TODO4"
   ]);
+  // ===================================
+  // タスクの追加機能
+  // ===================================
+  
+  const onChangeTodoText = (event) => setTodoText(event.target.value); // 実際の開発では react-hook-form などのライブラリを使用することが多い
+  const onClickAdd = () => {
+    if (todoText === "") return; // 入力が空の場合は何もしない
+    const newTodos = [...imcompleteTodos, todoText]; // スプレッド構文で配列を展開して新しい配列を作成する
+    setImcompleteTodos(newTodos); // 既存の配列を直接変更するのではなく、新しい配列を作成して状態を更新する
+    setTodoText(""); // 入力欄を空にする
+  }
 
+  // ===================================
+  // タスクの削除機能
+  // ===================================
+  const onClickDelete = (index) => {
+    const newTodos = [...imcompleteTodos]; // スプレッド構文で配列を展開して新しい配列を作成する
+    newTodos.splice(index, 1); // index番目の要素を削除する
+    setImcompleteTodos(newTodos); // 既存の配列を直接変更するのではなく、新しい配列を作成して状態を更新する
+  }
+
+  // ===================================
+  // タスクの完了機能
+  // ===================================
+
+  // ===================================
+  // タスクの戻す機能
+  // ===================================
+  
   return (
     <>
       <div className="input-area">
@@ -34,13 +53,13 @@ export function Todo() {
       <div className="incomplete-area">
         <p className="title">未完了のTODO</p>
         <ul>
-          {imcompleteTodos.map((todo) => { // indexは順番が変わる場合があるため、keyには使用しない
+          {imcompleteTodos.map((todo, index) => { // indexは順番が変わる場合があるため、keyには使用しない
             return (
               <li key={todo}>
                 <div className="list-row">
                   <p className="todo-item">{todo}</p>
                   <button>完了</button>
-                  <button>削除</button>
+                  <button onClick={() => onClickDelete(index)}>削除</button> {/* onClickDeleteに引数を渡すために、無名関数でラップする */ }
                 </div>
               </li>
             );
