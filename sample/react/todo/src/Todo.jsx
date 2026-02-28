@@ -12,6 +12,7 @@ export function Todo() {
   const [todoText, setTodoText] = useState("");
   const [incompleteTodos, setIncompleteTodos] = useState([]);
   const [completeTodos, setCompleteTodos] = useState([]);
+
   // ===================================
   // タスクの追加機能
   // ===================================
@@ -54,13 +55,26 @@ export function Todo() {
     setIncompleteTodos(newIncompleteTodos); // 既存の配列を直接変更するのではなく、新しい配列を作成して状態を更新する
   }
 
+  // ===================================
+  // 最大Todo数の制限機能
+  // ===================================
+  const MAX_TODO = 5; // 定数を定義することで、後から変更しやすくする
+  const isMaxLimitIncompleteTodos = incompleteTodos.length >= MAX_TODO; // 未完了のTODOが最大数以上の場合はtrueになる
+
+
   return (
     <>
       <InputTodo 
         todoText={todoText}
         onChange={onChangeTodoText}
-        onClick={onClickAdd}      
+        onClick={onClickAdd}
+        disabled={isMaxLimitIncompleteTodos} // 未完了のTODOが最大数以上の場合は入力を無効化する
       />
+      {isMaxLimitIncompleteTodos && (
+        <p style={{ color: "red" }}>
+          TODOは5個まで
+        </p>
+      )}
       <IncompleteTodo
         todos={incompleteTodos}
         onClickComplete={onClickComplete}
