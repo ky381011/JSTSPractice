@@ -3,7 +3,18 @@ import "./style.css";
 import { useState } from "react";
 
 export function Todo() {
+  // ===================================
+  // 追加機能
+  // ===================================
   const [todoText, setTodoText] = useState("");
+  const onChangeTodoText = (event) => setTodoText(event.target.value); // 実際の開発では react-hook-form などのライブラリを使用することが多い
+  const onClickAdd = () => {
+    if (todoText === "") return; // 入力が空の場合は何もしない
+    const newTodos = [...imcompleteTodos, todoText]; // スプレッド構文で配列を展開して新しい配列を作成する
+    setImcompleteTodos(newTodos); // 既存の配列を直接変更するのではなく、新しい配列を作成して状態を更新する
+    setTodoText(""); // 入力欄を空にする
+  }
+
 
   const [imcompleteTodos, setImcompleteTodos] = useState([
     "TODO1",
@@ -13,13 +24,6 @@ export function Todo() {
     "TODO3",
     "TODO4"
   ]);
-
-  const onChangeTodoText = (event) => setTodoText(event.target.value); // 実際の開発では react-hook-form などのライブラリを使用することが多い
-  const onClickAdd = () => {
-    const newTodos = [...imcompleteTodos, todoText];
-    setImcompleteTodos(newTodos);
-    setTodoText("");
-  }
 
   return (
     <>
