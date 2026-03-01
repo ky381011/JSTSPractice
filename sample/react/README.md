@@ -28,8 +28,12 @@ root.render(
   </StrictMode>
 );
 ```
+1. 空の`src/style.css`を作成
 1. `src/(任意のアプリ名).jsx`を作成して以下を記述
 ```jsx
+import "./style.css";
+import { useState } from "react";
+
 export function (export名)() {
   return (
     <div></div>
