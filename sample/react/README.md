@@ -36,7 +36,9 @@ import { useState } from "react";
 
 export function (export名)() {
   return (
-    <div></div>
+    <>
+      <div></div>
+    </>
   );
 }
 ```
