@@ -1,10 +1,12 @@
+import { memo } from "react";
+
 const style = {
   width: "100%",
   height: "200px",
   backgroundColor: "khaki",
 };
 
-export const ChildArea = (props) => {
+export const ChildArea = memo((props) => {
   const { open } = props;
 
   // const data = [...Array(1000).keys()]; // 1000個の要素を持つ配列を作成
@@ -22,7 +24,7 @@ export const ChildArea = (props) => {
       ) : null}
     </>
   );
-}
+});
 
 // 再レンダリングの条件
 // 1. stateが変更されたとき
