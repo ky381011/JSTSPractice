@@ -7,7 +7,7 @@ const style = {
 };
 
 export const ChildArea = memo((props) => {
-  const { open } = props;
+  const { open, onClickClose } = props;
 
   // const data = [...Array(1000).keys()]; // 1000個の要素を持つ配列を作成
   // console.log(data); // 毎回レンダリングされるたびにコンソールに出力される
@@ -20,6 +20,7 @@ export const ChildArea = memo((props) => {
       {open ? (
         <div style={style}>
           <p>子コンポーネント</p>
+          <button onClick={onClickClose}>閉じる</button> {/* memoを使用しても、propsが変更されると再レンダリングされる */}
         </div>
       ) : null}
     </>

@@ -1,7 +1,7 @@
 import "./style.css";
 import { ChildArea } from "./components/ChildArea";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 export function Rendering() {
   const [text, setText] = useState("");
@@ -11,12 +11,13 @@ export function Rendering() {
 
   const onClickOpen = () => setOpen(!open);
 
+  const onClickClose = useCallback(() => setOpen(false), []);
   return (
     <div className="Rendering">
       <input value={text} onChange={onChangeText}/>
       <br />
       <button onClick={onClickOpen}>表示</button>
-      <ChildArea open={open}/>
+      <ChildArea open={open} onClickClose={onClickClose}/>
     </div>
   );
 }
