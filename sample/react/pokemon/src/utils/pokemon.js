@@ -6,3 +6,7 @@ export const getAllPokemon = async (url) => {
       .then((data) => resolve(data));
     });
   };
+
+export const getPokemon = async (url) => {
+
+};
