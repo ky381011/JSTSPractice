@@ -20,7 +20,7 @@ export function App() {
     setPokemonData(_pokemonData);
   }
 
-  // console.log(pokemonData);
+  console.log(pokemonData);
 
   useEffect(() => {
     const fetchPokemonData = async () => {
