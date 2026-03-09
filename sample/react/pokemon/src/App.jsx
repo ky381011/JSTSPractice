@@ -1,6 +1,8 @@
 import "./style.css";
 import { useEffect, useState } from "react";
 
+import Card from "./components/Card/Card";
+
 import { getAllPokemon, getPokemon } from "./utils/pokemon";
 
 export function App() {
@@ -34,7 +36,17 @@ export function App() {
   return (
     <>
       <div className="App">
-        {loading ? <h1>Loading Now...</h1> : <h1>Loading Complete!</h1>}
+        {loading ? (
+          <h1>Loading Now...</h1>
+        ) : (
+          <>
+            <div className="pokemonCardContainer">
+              {pokemonData.map((pokemon, i) => {
+                return <Card key={i} pokemon={pokemon} />;
+              })}
+            </div>
+          </>
+        )}
       </div>
     </>
   );
