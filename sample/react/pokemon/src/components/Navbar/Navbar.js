@@ -4,7 +4,7 @@ import "./Navbar.css";
 
 const Navbar = () => {
   return (
-    <div></div>
+    <nav>ポケモン図鑑</nav>
   );
 }
 export default Navbar;
