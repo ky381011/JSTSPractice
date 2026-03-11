@@ -2,6 +2,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 
 import Card from "./components/Card/Card";
+import Navbar from "./components/Navbar/Navbar";
 
 import { getAllPokemon, getPokemon } from "./utils/pokemon";
 
@@ -35,6 +36,7 @@ export function App() {
 
   return (
     <>
+      <Navbar />
       <div className="App">
         {loading ? (
           <h1>Loading Now...</h1>
