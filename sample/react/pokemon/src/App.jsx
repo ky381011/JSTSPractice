@@ -10,6 +10,8 @@ export function App() {
   const initialURL = "https://pokeapi.co/api/v2/pokemon";
   const [loading, setLoading] = useState(true);
   const [pokemonData, setPokemonData] = useState([]);
+  const [nextURL, setNextURL] = useState("");
+  const [prevURL, setPrevURL] = useState("");
 
   const loadPokemon = async (data) => {
     let _pokemonData = await Promise.all( // すべてのポケモンの詳細データを取得するためにPromise.allを使用している
@@ -21,7 +23,26 @@ export function App() {
     setPokemonData(_pokemonData);
   }
 
-  console.log(pokemonData);
+  // console.log(pokemonData);
+
+  const handleNextPage = async () => {
+    setLoading(true);
+    let data = await getAllPokemon(nextURL);
+    await loadPokemon(data.results);
+    setNextURL(data.next);
+    setPrevURL(data.previous);
+    setLoading(false);
+  }
+
+  const handlePrevPage = async () => {
+    if (!prevURL) return;
+    setLoading(true);
+    let data = await getAllPokemon(prevURL);
+    await loadPokemon(data.results);
+    setNextURL(data.next);
+    setPrevURL(data.previous);
+    setLoading(false);
+  }
 
   useEffect(() => {
     const fetchPokemonData = async () => {
@@ -29,6 +50,8 @@ export function App() {
       let res = await getAllPokemon(initialURL);
       // 各ポケモンの詳細データを取得するためのロジック
       loadPokemon(res.results);
+      setNextURL(res.next);
+      setPrevURL(res.previous);
       setLoading(false);
     }
     fetchPokemonData();
@@ -46,6 +69,10 @@ export function App() {
               {pokemonData.map((pokemon, i) => {
                 return <Card key={i} pokemon={pokemon} />;
               })}
+            </div>
+            <div className="btn">
+              <button onClick={handlePrevPage}>前へ</button>
+              <button onClick={handleNextPage}>次へ</button>
             </div>
           </>
         )}
