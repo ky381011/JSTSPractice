@@ -73,6 +73,22 @@ export function (export名)() {
 ...
 }
 ```
+#### 初期化
+1. 各svgを削除
+1. `App.jsx`を以下に更新
+```jsx
+import './App.css'
+
+function App() {
+  return (
+    <>
+      <div></div>
+    </>
+  )
+}
+
+export default App
+```
 #### 次回以降
 1. ディレクトリ移動
 `cd sample/react/(プロジェクト名)`
