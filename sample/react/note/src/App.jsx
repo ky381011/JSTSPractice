@@ -1,9 +1,15 @@
 import './App.css'
 
+import Sidebar from './components/Sidebar'
+import Main from './components/Main'
+
 function App() {
   return (
     <>
-      <div></div>
+      <div className='App'>
+        <Sidebar />
+        <Main />
+      </div>
     </>
   )
 }
