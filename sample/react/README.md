@@ -61,8 +61,20 @@ export function (export名)() {
     1. Variant : `javascript`を選択
     1. (実験機能は`No`)
     1. installとstart : `Yes`
+#### 追加設定
+1. `package.json`を編集
+```diff
+"scripts": {
+- "dev": "vite",
+...
+}
+"scripts": {
++ "start": "vite",
+...
+}
+```
 #### 次回以降
 1. ディレクトリ移動
 `cd sample/react/(プロジェクト名)`
 1. 起動
-`npm run dev`
+`npm start`
