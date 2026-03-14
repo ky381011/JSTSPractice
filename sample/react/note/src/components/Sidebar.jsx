@@ -7,15 +7,15 @@ const Sidebar = () => {
       <div className='app-sidebar-header'>
         <h1>ノート</h1>
         <button>追加</button>
-        <div className='app-sidebar-notes'>
-          <div className='app-sidebar-note'>
-            <div className='sidebar-note-title'>
-              <strong>タイトル</strong>
-              <button>削除</button>
-            </div>
-            <p>ノートの内容</p>
-            <small>最後の修正日:xx/xx</small>
+      </div>
+      <div className='app-sidebar-notes'>
+        <div className='app-sidebar-note'>
+          <div className='sidebar-note-title'>
+            <strong>タイトル</strong>
+            <button>削除</button>
           </div>
+          <p>ノートの内容</p>
+          <small>最後の修正日:xx/xx</small>
         </div>
       </div>
     </div>
