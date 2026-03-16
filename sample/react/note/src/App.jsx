@@ -18,11 +18,12 @@ function App() {
       modDate: Date.now(),
     };
     setNotes([...notes, newNote]);
+    console.log(notes);
   }
   return (
     <>
       <div className='App'>
-        <Sidebar onAddNote={onAddNote} />
+        <Sidebar onAddNote={onAddNote} notes={notes}/>
         <Main />
       </div>
     </>
