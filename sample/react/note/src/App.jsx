@@ -8,6 +8,7 @@ import Main from './components/Main'
 
 function App() {
   const [notes, setNotes] = useState([]);
+  const [activeNote, setActiveNote] = useState(false);
 
   const onAddNote = () => {
     console.log('ノートを追加');
@@ -29,7 +30,13 @@ function App() {
   return (
     <>
       <div className='App'>
-        <Sidebar onAddNote={onAddNote} onDeleteNote={onDeleteNote} notes={notes}/>
+        <Sidebar
+          onAddNote={onAddNote}
+          onDeleteNote={onDeleteNote}
+          notes={notes}
+          activeNote={activeNote}
+          setActiveNote={setActiveNote}
+        />
         <Main />
       </div>
     </>
