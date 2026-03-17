@@ -1,6 +1,7 @@
 import './App.css'
 
 import { useState } from 'react'
+import uuid from 'react-uuid'
 
 import Sidebar from './components/Sidebar'
 import Main from './components/Main'
@@ -8,11 +9,10 @@ import Main from './components/Main'
 function App() {
   const [notes, setNotes] = useState([]);
 
-
   const onAddNote = () => {
     console.log('ノートを追加');
     const newNote = {
-      id: 1,
+      id: uuid(),
       title: '新しいノート',
       content: 'ノートの内容',
       modDate: Date.now(),
