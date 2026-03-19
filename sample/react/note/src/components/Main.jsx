@@ -1,5 +1,5 @@
 import React from 'react'
-import './Sidebar.css'
+import './Main.css'
 
 const Main = () => {
   return (
