@@ -32,6 +32,10 @@ function App() {
     return notes.find(note => note.id === activeNote);
   }
 
+  const onUpdateNote = () => {
+    // 修正されたノートの配列を返す
+  }
+
   return (
     <>
       <div className='App'>
