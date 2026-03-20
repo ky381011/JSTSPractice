@@ -1,10 +1,14 @@
 import React from 'react'
 import './Main.css'
 
-const Main = ({ activeNote }) => {
+const Main = ({ activeNote, onUpdateNote }) => {
   const onEditNote = (key, value) => {
-    console.log('ノートを編集');
-    console.log(key, value);
+    onUpdateNote({
+      ...activeNote,
+      id: activeNote.id,
+      [key]: value,
+      modDate: Date.now(),
+    });
   }
 
   if (!activeNote) {
