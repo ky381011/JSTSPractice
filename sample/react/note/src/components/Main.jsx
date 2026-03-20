@@ -19,12 +19,12 @@ const Main = ({ activeNote, onUpdateNote }) => {
     <div className='app-main'>
       <div className='app-main-note-edit'>
         <input
-          type="text"
+          type="title"
           value={activeNote.title}
           onChange={(e) => onEditNote("title", e.target.value)}
         />
         <textarea 
-          id=""
+          id="content"
           placeholder='ノート内容を記入'
           value={activeNote.content}
           onChange={(e) => onEditNote("content", e.target.value)}

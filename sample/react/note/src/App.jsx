@@ -35,7 +35,7 @@ function App() {
   const onUpdateNote = (updatedNote) => {
     // 修正されたノートの配列を返す
     const updatedNotesArray = notes.map(note => {
-      if (note.id === updatedNotesArray.id) {
+      if (note.id === updatedNote.id) {
         return updatedNote;
       } else {
         return note;
@@ -56,7 +56,7 @@ function App() {
           setActiveNote={setActiveNote}
         />
         <Main 
-          activeNote={getActiveNote}
+          activeNote={getActiveNote()}
           onUpdateNote={onUpdateNote}
         />
       </div>
