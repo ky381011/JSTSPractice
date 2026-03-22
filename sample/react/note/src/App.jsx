@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     // ローカルストレージにノートを保存する
-    localStorage.setItem("notes", notes);
+    localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
 
   const onAddNote = () => {
