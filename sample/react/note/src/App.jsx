@@ -1,6 +1,6 @@
 import './App.css'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import uuid from 'react-uuid'
 
 import Sidebar from './components/Sidebar'
@@ -9,6 +9,11 @@ import Main from './components/Main'
 function App() {
   const [notes, setNotes] = useState([]);
   const [activeNote, setActiveNote] = useState(false);
+
+  useEffect(() => {
+    // ローカルストレージにノートを保存する
+    localStorage.setItem("notes", notes);
+  }, [notes]);
 
   const onAddNote = () => {
     console.log('ノートを追加');
